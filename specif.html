@@ -1,15 +1,4 @@
-import requests
-from bs4 import BeautifulSoup
-import re
-
-headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
-'''
-url = "https://fujifilm-x.com/global/products/lenses/"
-response = requests.get(url, headers=headers)
-#print(response)
-'''
-
-html_content = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
  <head>
   <meta charset="utf-8"/>
@@ -24,17 +13,17 @@ html_content = """<!DOCTYPE html>
    function OptanonWrapper() { }
   </script>
   <meta content="article" property="og:type"/>
-  <meta content="https://fujifilm-x.com/global/products/lenses/" property="og:url"/>
-  <meta content="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/share.png?092000" property="og:image"/>
+  <meta content="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/" property="og:url"/>
+  <meta content="https://fujifilm-x.com/wp-content/uploads/2019/10/XF14mmF2.8-R.png" property="og:image"/>
   <meta content="summary_large_image" name="twitter:card"/>
-  <meta content="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/share.png?092000" name="twitter:image"/>
+  <meta content="https://fujifilm-x.com/wp-content/uploads/2019/10/XF14mmF2.8-R.png" name="twitter:image"/>
   <meta content="FUJIFILM X Series &amp; GFX – Global" property="og:site_name"/>
   <meta content="FUJIFILM X Series &amp; GFX – Global official site." property="og:description"/>
   <meta content="FUJIFILM X Series &amp; GFX – Global official site." name="description"/>
-  <meta content="Lenses | FUJIFILM X Series &amp; GFX – Global" property="og:title"/>
-  <link href="https://fujifilm-x.com/wp-content/cache/autoptimize/1/css/autoptimize_d9349d69e4f1eed124f6b3b561a7a5cf.css" media="all" rel="stylesheet"/>
+  <meta content="Specifications | XF14mmF2.8 R | Lenses | FUJIFILM X Series &amp; GFX – Global" property="og:title"/>
+  <link href="https://fujifilm-x.com/wp-content/cache/autoptimize/1/css/autoptimize_257793955ab9916e538c565a8e846658.css" media="all" rel="stylesheet"/>
   <title>
-   Lenses | FUJIFILM X Series &amp; GFX – Global
+   Specifications | XF14mmF2.8 R | Lenses | FUJIFILM X Series &amp; GFX – Global
   </title>
   <link href="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/favicon.ico" rel="icon" type="image/x-icon"/>
   <link href="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/apple-touch-icon.png" rel="apple-touch-icon"/>
@@ -51,57 +40,58 @@ html_content = """<!DOCTYPE html>
   <link href="/wp-content/themes/fujifilm-x_jp/assets/css/table_store.css?ver=201910" rel="stylesheet"/>
   <link href="/wp-content/themes/fujifilm-x_jp/assets/css/elementor_custom.css?ver=20210630" rel="stylesheet"/>
   <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots">
-   <link href="https://fujifilm-x.com/global/products/lenses/ja" hreflang="ja-jp" rel="alternate">
-    <link href="https://fujifilm-x.com/global/products/lenses/en-au" hreflang="en-au" rel="alternate">
-     <link href="https://fujifilm-x.com/global/products/lenses/de-at" hreflang="de-at" rel="alternate">
-      <link href="https://fujifilm-x.com/global/products/lenses/nl-be" hreflang="nl-be" rel="alternate">
-       <link href="https://fujifilm-x.com/global/products/lenses/fr-be" hreflang="fr-be" rel="alternate">
-        <link href="https://fujifilm-x.com/global/products/lenses/en-ca" hreflang="en-ca" rel="alternate">
-         <link href="https://fujifilm-x.com/global/products/lenses/fr-ca" hreflang="fr-ca" rel="alternate">
-          <link href="https://fujifilm-x.com/global/products/lenses/zh-hans" hreflang="zh-cn" rel="alternate">
-           <link href="https://fujifilm-x.com/global/products/lenses/" hreflang="global" rel="alternate">
-            <link href="https://fujifilm-x.com/global/products/lenses/el" hreflang="el-gr" rel="alternate">
-             <link href="https://fujifilm-x.com/global/products/lenses/it" hreflang="it-it" rel="alternate">
-              <link href="https://fujifilm-x.com/global/products/lenses/ko" hreflang="ko-kr" rel="alternate">
-               <link href="https://fujifilm-x.com/global/products/lenses/en-us" hreflang="en-us" rel="alternate">
-                <link href="https://fujifilm-x.com/global/products/lenses/en-gb" hreflang="en-gb" rel="alternate">
-                 <link href="https://fujifilm-x.com/global/products/lenses/br" hreflang="pt-br" rel="alternate">
-                  <link href="https://fujifilm-x.com/global/products/lenses/hr" hreflang="hr-hr" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/cs" hreflang="cs-cz" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/da" hreflang="da-dk" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/sl" hreflang="sl-si" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/es" hreflang="es-es" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/sv" hreflang="sv-se" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/fr-ch" hreflang="fr-ch" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/de-ch" hreflang="de-ch" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/th" hreflang="th-th" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/tr" hreflang="tr-tr" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/uk" hreflang="uk-ua" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/vi" hreflang="vi" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/de" hreflang="de-de" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/et" hreflang="et-ee" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/fi" hreflang="fi-fi" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/fr" hreflang="fr-fr" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/hu" hreflang="hu-hu" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/is" hreflang="is-is" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/en-in" hreflang="en-in" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/id" hreflang="id-id" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/ga" hreflang="en-ie" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/lv" hreflang="lv-lv" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/lt" hreflang="lt-lt" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/ms" hreflang="ms" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/nl-nl" hreflang="nl-nl" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/no" hreflang="no-no" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/ph" hreflang="en-ph" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/pl" hreflang="pl-pl" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/pt-pt" hreflang="pt-pt" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/ro" hreflang="ro" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/ru" hreflang="ru-ru" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/en-sg" hreflang="en-sg" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/sk" hreflang="sk-sk" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/en-nz" hreflang="en-nz" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/" hreflang="x-default" rel="alternate"/>
-                  <link href="https://fujifilm-x.com/global/products/lenses/zh-hans" rel="canonical"/>
+   <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/ja" hreflang="ja-jp" rel="alternate">
+    <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/en-au" hreflang="en-au" rel="alternate">
+     <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/de-at" hreflang="de-at" rel="alternate">
+      <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/nl-be" hreflang="nl-be" rel="alternate">
+       <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/fr-be" hreflang="fr-be" rel="alternate">
+        <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/en-ca" hreflang="en-ca" rel="alternate">
+         <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r_fr-ca/specifications/fr-ca" hreflang="fr-ca" rel="alternate">
+          <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r_zh-cn/specifications/zh-hans" hreflang="zh-cn" rel="alternate">
+           <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/" hreflang="global" rel="alternate">
+            <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/el" hreflang="el-gr" rel="alternate">
+             <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/it" hreflang="it-it" rel="alternate">
+              <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r_ko-kr/specifications/ko" hreflang="ko-kr" rel="alternate">
+               <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r_en-us/specifications/en-us" hreflang="en-us" rel="alternate">
+                <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r_en-gb/specifications/en-gb" hreflang="en-gb" rel="alternate">
+                 <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/br" hreflang="pt-br" rel="alternate">
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/hr" hreflang="hr-hr" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/cs" hreflang="cs-cz" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/da" hreflang="da-dk" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/sl" hreflang="sl-si" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r_es-es/specifications/es" hreflang="es-es" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/sv" hreflang="sv-se" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/fr-ch" hreflang="fr-ch" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/de-ch" hreflang="de-ch" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/th" hreflang="th-th" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r_tr-tr/specifications/tr" hreflang="tr-tr" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/uk" hreflang="uk-ua" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r_vi-vn/specifications/vi" hreflang="vi" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/de" hreflang="de-de" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/et" hreflang="et-ee" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/fi" hreflang="fi-fi" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r_fr-fr/specifications/fr" hreflang="fr-fr" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/hu" hreflang="hu-hu" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/is" hreflang="is-is" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/en-in" hreflang="en-in" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/id" hreflang="id-id" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/ga" hreflang="en-ie" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/lv" hreflang="lv-lv" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/lt" hreflang="lt-lt" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/ms" hreflang="ms" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r_nl-nl/specifications/nl-nl" hreflang="nl-nl" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/no" hreflang="no-no" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/ph" hreflang="en-ph" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r_pl-pl/specifications/pl" hreflang="pl-pl" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/pt-pt" hreflang="pt-pt" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/ro" hreflang="ro" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r_ru-ru/specifications/ru" hreflang="ru-ru" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/en-sg" hreflang="en-sg" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/sk" hreflang="sk-sk" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/en-nz" hreflang="en-nz" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/" hreflang="x-default" rel="alternate"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/" rel="canonical"/>
+                  <link href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/specifications/feed/" rel="alternate" title="Global » Specifications Comments Feed" type="application/rss+xml"/>
                   <style class="celtispack exc-amp" type="text/css">
                    .widget{margin:0 0 20px 0;}.content-widget-wrapper{padding-top:10px;}.left .Linkunit_async_ads,.left .Responsive_async_ads{float:left;margin-right:16px;margin-left:0;}.right .Linkunit_async_ads,.right .Responsive_async_ads{float:right;margin-right:0;margin-left:16px;}.center .Linkunit_async_ads,.center .Responsive_async_ads{clear:both;text-align:center;margin-right:auto;margin-left:auto;}.widget.Linkunit_async_ads,.widget.Responsive_async_ads,.widget.Smart_async_ads,.widget.Matched_content_ads{background-color:transparent;}.adsense_async_code ins,ins.adsbygoogle{background-color:transparent;}
                   </style>
@@ -118,6 +108,7 @@ html_content = """<!DOCTYPE html>
                    .wpml-ls-statics-shortcode_actions, .wpml-ls-statics-shortcode_actions .wpml-ls-sub-menu, .wpml-ls-statics-shortcode_actions a {border-color:#cdcdcd;}.wpml-ls-statics-shortcode_actions a {color:#444444;background-color:#ffffff;}.wpml-ls-statics-shortcode_actions a:hover,.wpml-ls-statics-shortcode_actions a:focus {color:#000000;background-color:#eeeeee;}.wpml-ls-statics-shortcode_actions .wpml-ls-current-language>a {color:#444444;background-color:#ffffff;}.wpml-ls-statics-shortcode_actions .wpml-ls-current-language:hover>a, .wpml-ls-statics-shortcode_actions .wpml-ls-current-language>a:focus {color:#000000;background-color:#eeeeee;}
                   </style>
                   <link href="https://fujifilm-x.com/wp-content/uploads/elementor/css/post-3433221.css" id="elementor-post-3433221-css" media="all" rel="stylesheet" type="text/css"/>
+                  <link href="https://fujifilm-x.com/wp-content/uploads/elementor/css/post-154249.css" id="elementor-post-154249-css" media="all" rel="stylesheet" type="text/css"/>
                   <script id="jquery-core-js" src="https://fujifilm-x.com/wp-includes/js/jquery/jquery.min.js" type="text/javascript">
                   </script>
                   <script id="jquery-migrate-js" src="https://fujifilm-x.com/wp-includes/js/jquery/jquery-migrate.min.js" type="text/javascript">
@@ -125,12 +116,11 @@ html_content = """<!DOCTYPE html>
                   <script id="wpml-legacy-dropdown-0-js" src="//fujifilm-x.com/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/legacy-dropdown/script.min.js" type="text/javascript">
                   </script>
                   <link href="https://fujifilm-x.com/wp-json/" rel="https://api.w.org/"/>
-                  <link href="https://fujifilm-x.com/wp-json/wp/v2/pages/231499" rel="alternate" type="application/json"/>
                   <link href="https://fujifilm-x.com/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
                   <link href="https://fujifilm-x.com/wp-includes/wlwmanifest.xml" rel="wlwmanifest" type="application/wlwmanifest+xml"/>
-                  <link href="https://fujifilm-x.com/?p=231499" rel="shortlink"/>
-                  <link href="https://fujifilm-x.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ffujifilm-x.com%2Fproducts%2Flenses%2F" rel="alternate" type="application/json+oembed"/>
-                  <link href="https://fujifilm-x.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ffujifilm-x.com%2Fproducts%2Flenses%2F&amp;format=xml" rel="alternate" type="text/xml+oembed"/>
+                  <link href="https://fujifilm-x.com/?p=154249" rel="shortlink"/>
+                  <link href="https://fujifilm-x.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ffujifilm-x.com%2Fproducts%2Flenses%2Fxf14mmf28-r%2Fspecifications%2F" rel="alternate" type="application/json+oembed"/>
+                  <link href="https://fujifilm-x.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ffujifilm-x.com%2Fproducts%2Flenses%2Fxf14mmf28-r%2Fspecifications%2F&amp;format=xml" rel="alternate" type="text/xml+oembed"/>
                   <meta content="WPML ver:4.6.3 stt:66,67,69,68,82,70,71,59,22,9,12,15,18,4,3,79,13,23,26,78,25,19,27,28,29,31,32,62,73,83,38,80,40,41,44,45,74,10,46,2,50,76,75,52,53,81,54,65,57;" name="generator">
                    <script type="text/javascript">
                     ( function () {
@@ -189,7 +179,7 @@ html_content = """<!DOCTYPE html>
    </link>
   </meta>
  </head>
- <body class="page-template page-template-page-lenses_renew page-template-page-lenses_renew-php page page-id-231499 page-child parent-pageid-231492 elementor-default elementor-kit-3433221 elementor-page elementor-page-231499" id="">
+ <body class="lenses_renew-template-default single single-lenses_renew postid-154249 elementor-default elementor-kit-3433221 elementor-page elementor-page-154249" id="single">
   <noscript>
    <iframe height="0" src="//www.googletagmanager.com/ns.html?id=GTM-NWPVDB" style="display:none;visibility:hidden" width="0">
    </iframe>
@@ -470,7 +460,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/brazil.svg"/>
             <p>
-             <a href="/pt-br/products/lenses/">
+             <a href="/pt-br/products/lenses/xf14mmf28-r/specifications/">
               brazil
              </a>
             </p>
@@ -479,11 +469,11 @@ html_content = """<!DOCTYPE html>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/canada.svg"/>
             <p>
              canada (
-             <a href="/en-ca/products/lenses/">
+             <a href="/en-ca/products/lenses/xf14mmf28-r/specifications/">
               English
              </a>
              ,
-             <a href="/fr-ca/products/lenses/">
+             <a href="/fr-ca/products/lenses/xf14mmf28-r/specifications/">
               French
              </a>
              )
@@ -492,7 +482,7 @@ html_content = """<!DOCTYPE html>
            <li class="multi">
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/usa.svg"/>
             <p>
-             <a href="/en-us/products/lenses/">
+             <a href="/en-us/products/lenses/xf14mmf28-r/specifications/">
               USA
              </a>
             </p>
@@ -509,7 +499,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/china.svg"/>
             <p>
-             <a href="/zh-cn/products/lenses/">
+             <a href="/zh-cn/products/lenses/xf14mmf28-r/specifications/">
               china
              </a>
             </p>
@@ -517,7 +507,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/india.svg"/>
             <p>
-             <a href="/en-in/products/lenses/">
+             <a href="/en-in/products/lenses/xf14mmf28-r/specifications/">
               india
              </a>
             </p>
@@ -525,7 +515,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/indonesia.svg"/>
             <p>
-             <a href="/id-id/products/lenses/">
+             <a href="/id-id/products/lenses/xf14mmf28-r/specifications/">
               indonesia
              </a>
             </p>
@@ -533,7 +523,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/japan.svg"/>
             <p>
-             <a href="/ja-jp/products/lenses/">
+             <a href="/ja-jp/products/lenses/xf14mmf28-r/specifications/">
               Japan
              </a>
             </p>
@@ -541,7 +531,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/korea.svg"/>
             <p>
-             <a href="/ko-kr/products/lenses/">
+             <a href="/ko-kr/products/lenses/xf14mmf28-r/specifications/">
               korea
              </a>
             </p>
@@ -549,7 +539,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/malaysia.svg"/>
             <p>
-             <a href="/en-my/products/lenses/">
+             <a href="/en-my/products/lenses/xf14mmf28-r/specifications/">
               malaysia
              </a>
             </p>
@@ -557,7 +547,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/philippines.svg"/>
             <p>
-             <a href="/en-ph/products/lenses/">
+             <a href="/en-ph/products/lenses/xf14mmf28-r/specifications/">
               Philippines
              </a>
             </p>
@@ -565,7 +555,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/singapore.svg"/>
             <p>
-             <a href="/en-sg/products/lenses/">
+             <a href="/en-sg/products/lenses/xf14mmf28-r/specifications/">
               singapore
              </a>
             </p>
@@ -573,7 +563,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/thailand.svg"/>
             <p>
-             <a href="/th-th/products/lenses/">
+             <a href="/th-th/products/lenses/xf14mmf28-r/specifications/">
               thailand
              </a>
             </p>
@@ -581,7 +571,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/vietnam.svg"/>
             <p>
-             <a href="/vi-vn/products/lenses/">
+             <a href="/vi-vn/products/lenses/xf14mmf28-r/specifications/">
               Vietnam
              </a>
             </p>
@@ -598,7 +588,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/austria.svg"/>
             <p>
-             <a href="/de-at/products/lenses/">
+             <a href="/de-at/products/lenses/xf14mmf28-r/specifications/">
               austria
              </a>
             </p>
@@ -607,11 +597,11 @@ html_content = """<!DOCTYPE html>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/belgium.svg"/>
             <p>
              belgium (
-             <a href="/fr-be/products/lenses/">
+             <a href="/fr-be/products/lenses/xf14mmf28-r/specifications/">
               French
              </a>
              ,
-             <a href="/nl-be/products/lenses/">
+             <a href="/nl-be/products/lenses/xf14mmf28-r/specifications/">
               Dutch
              </a>
              )
@@ -620,7 +610,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/croatia.svg"/>
             <p>
-             <a href="/hr-hr/products/lenses/">
+             <a href="/hr-hr/products/lenses/xf14mmf28-r/specifications/">
               croatia
              </a>
             </p>
@@ -628,7 +618,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/czechia.svg"/>
             <p>
-             <a href="/cs-cz/products/lenses/">
+             <a href="/cs-cz/products/lenses/xf14mmf28-r/specifications/">
               czechia
              </a>
             </p>
@@ -636,7 +626,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/denmark.svg"/>
             <p>
-             <a href="/da-dk/products/lenses/">
+             <a href="/da-dk/products/lenses/xf14mmf28-r/specifications/">
               denmark
              </a>
             </p>
@@ -644,7 +634,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/estonia.svg"/>
             <p>
-             <a href="/et-ee/products/lenses/">
+             <a href="/et-ee/products/lenses/xf14mmf28-r/specifications/">
               estonia
              </a>
             </p>
@@ -652,7 +642,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/finland.svg"/>
             <p>
-             <a href="/fi-fi/products/lenses/">
+             <a href="/fi-fi/products/lenses/xf14mmf28-r/specifications/">
               finland
              </a>
             </p>
@@ -660,7 +650,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/france.svg"/>
             <p>
-             <a href="/fr-fr/products/lenses/">
+             <a href="/fr-fr/products/lenses/xf14mmf28-r/specifications/">
               france
              </a>
             </p>
@@ -668,7 +658,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/germany.svg"/>
             <p>
-             <a href="/de-de/products/lenses/">
+             <a href="/de-de/products/lenses/xf14mmf28-r/specifications/">
               germany
              </a>
             </p>
@@ -676,7 +666,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/greece.svg"/>
             <p>
-             <a href="/el-gr/products/lenses/">
+             <a href="/el-gr/products/lenses/xf14mmf28-r/specifications/">
               greece
              </a>
             </p>
@@ -684,7 +674,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/hungary.svg"/>
             <p>
-             <a href="/hu-hu/products/lenses/">
+             <a href="/hu-hu/products/lenses/xf14mmf28-r/specifications/">
               hungary
              </a>
             </p>
@@ -692,7 +682,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/iceland.svg"/>
             <p>
-             <a href="/is-is/products/lenses/">
+             <a href="/is-is/products/lenses/xf14mmf28-r/specifications/">
               iceland
              </a>
             </p>
@@ -700,7 +690,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/ireland.svg"/>
             <p>
-             <a href="/en-ie/products/lenses/">
+             <a href="/en-ie/products/lenses/xf14mmf28-r/specifications/">
               ireland
              </a>
             </p>
@@ -708,7 +698,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/italy.svg"/>
             <p>
-             <a href="/it-it/products/lenses/">
+             <a href="/it-it/products/lenses/xf14mmf28-r/specifications/">
               italy
              </a>
             </p>
@@ -716,7 +706,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/latvia.svg"/>
             <p>
-             <a href="/lv-lv/products/lenses/">
+             <a href="/lv-lv/products/lenses/xf14mmf28-r/specifications/">
               latvia
              </a>
             </p>
@@ -724,7 +714,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/lithuania.svg"/>
             <p>
-             <a href="/lt-lt/products/lenses/">
+             <a href="/lt-lt/products/lenses/xf14mmf28-r/specifications/">
               lithuania
              </a>
             </p>
@@ -732,7 +722,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/netherlands.svg"/>
             <p>
-             <a href="/nl-nl/products/lenses/">
+             <a href="/nl-nl/products/lenses/xf14mmf28-r/specifications/">
               netherlands
              </a>
             </p>
@@ -740,7 +730,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/norway.svg"/>
             <p>
-             <a href="/no-no/products/lenses/">
+             <a href="/no-no/products/lenses/xf14mmf28-r/specifications/">
               norway
              </a>
             </p>
@@ -748,7 +738,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/poland.svg"/>
             <p>
-             <a href="/pl-pl/products/lenses/">
+             <a href="/pl-pl/products/lenses/xf14mmf28-r/specifications/">
               poland
              </a>
             </p>
@@ -756,7 +746,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/portugal.svg"/>
             <p>
-             <a href="/pt-pt/products/lenses/">
+             <a href="/pt-pt/products/lenses/xf14mmf28-r/specifications/">
               portugal
              </a>
             </p>
@@ -764,7 +754,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/romania.svg"/>
             <p>
-             <a href="/ro-ro/products/lenses/">
+             <a href="/ro-ro/products/lenses/xf14mmf28-r/specifications/">
               romania
              </a>
             </p>
@@ -772,7 +762,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/russia.svg"/>
             <p>
-             <a href="/ru-ru/products/lenses/">
+             <a href="/ru-ru/products/lenses/xf14mmf28-r/specifications/">
               russia
              </a>
             </p>
@@ -780,7 +770,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/slovakia.svg"/>
             <p>
-             <a href="/sk-sk/products/lenses/">
+             <a href="/sk-sk/products/lenses/xf14mmf28-r/specifications/">
               slovakia
              </a>
             </p>
@@ -788,7 +778,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/slovenia.svg"/>
             <p>
-             <a href="/sl-si/products/lenses/">
+             <a href="/sl-si/products/lenses/xf14mmf28-r/specifications/">
               slovenia
              </a>
             </p>
@@ -796,7 +786,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/spain.svg"/>
             <p>
-             <a href="/es-es/products/lenses/">
+             <a href="/es-es/products/lenses/xf14mmf28-r/specifications/">
               spain
              </a>
             </p>
@@ -804,7 +794,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/sweden.svg"/>
             <p>
-             <a href="/sv-se/products/lenses/">
+             <a href="/sv-se/products/lenses/xf14mmf28-r/specifications/">
               sweden
              </a>
             </p>
@@ -813,11 +803,11 @@ html_content = """<!DOCTYPE html>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/switzerland.svg"/>
             <p>
              switzerland (
-             <a href="/de-ch/products/lenses/">
+             <a href="/de-ch/products/lenses/xf14mmf28-r/specifications/">
               German
              </a>
              ,
-             <a href="/fr-ch/products/lenses/">
+             <a href="/fr-ch/products/lenses/xf14mmf28-r/specifications/">
               French
              </a>
              )
@@ -826,7 +816,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/turkey.svg"/>
             <p>
-             <a href="/tr-tr/products/lenses/">
+             <a href="/tr-tr/products/lenses/xf14mmf28-r/specifications/">
               turkey
              </a>
             </p>
@@ -834,7 +824,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/uk.svg"/>
             <p>
-             <a href="/en-gb/products/lenses/">
+             <a href="/en-gb/products/lenses/xf14mmf28-r/specifications/">
               UK
              </a>
             </p>
@@ -842,7 +832,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/ukraine.svg"/>
             <p>
-             <a href="/uk-ua/products/lenses/">
+             <a href="/uk-ua/products/lenses/xf14mmf28-r/specifications/">
               ukraine
              </a>
             </p>
@@ -859,7 +849,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/australia.svg"/>
             <p>
-             <a href="/en-au/products/lenses/">
+             <a href="/en-au/products/lenses/xf14mmf28-r/specifications/">
               australia
              </a>
             </p>
@@ -867,7 +857,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/new zealand.svg"/>
             <p>
-             <a href="/en-nz/products/lenses/">
+             <a href="/en-nz/products/lenses/xf14mmf28-r/specifications/">
               New Zealand
              </a>
             </p>
@@ -884,7 +874,7 @@ html_content = """<!DOCTYPE html>
            <li>
             <img src="https://fujifilm-x.com/wp-content/themes/fujifilm-x_jp/assets/img/common/flag/global.svg"/>
             <p>
-             <a href="/global/products/lenses/">
+             <a href="/global/products/lenses/xf14mmf28-r/specifications/">
               global
              </a>
             </p>
@@ -905,991 +895,473 @@ html_content = """<!DOCTYPE html>
      </div>
     </div>
    </header>
-   <p>
-   </p>
-   <main class="">
-    <main>
-     <section class="products__first lower__first">
-      <div class="inner">
-       <h1 class="headline_underline">
-        Lenses
-       </h1>
-       <div class="tagline">
-        <p>
-         The vision of the X Series, the choice for X Series owners.
-         <br/>
-         A collection of creativity-oriented lenses, which complement the X-Trans CMOS sensor perfectly and eliminate the low-pass filter for ultimate sharpness.
-        </p>
-       </div>
-       <div class="category_tab pdct">
-        <input id="css-ac" name="css-ac" type="checkbox"/>
-        <label class="sp-only" for="css-ac">
-         Select Category
-        </label>
-        <ul class="products_lnav-menu">
-         <li>
-          <a href="#model_g-mount">
-           G Mount
-          </a>
-         </li>
-         <li>
-          <a href="#model_x-mount">
-           X Mount
-          </a>
-         </li>
-        </ul>
-       </div>
-      </div>
-     </section>
-     <section class="banner_area">
-      <ul>
-      </ul>
-     </section>
-     <section class="products__series" id="model_g-mount">
-      <div class="inner">
-       <h2 class="headline_h2">
-        G Mount
-       </h2>
-       <ul class="category_tab pdct products__series_link products_lnav-menu">
-        <li>
-         <a href="#g-mount-prime">
-          Prime
-         </a>
-        </li>
-        <li>
-         <a href="#g-mount-zoom">
-          Zoom
-         </a>
-        </li>
-        <li>
-         <a href="#g-mount-teleconverter">
-          Teleconverter
-         </a>
-        </li>
-       </ul>
-       <h3 class="headline_h3" id="g-mount-prime">
-        Prime
-       </h3>
-       <ul class="products__series_list">
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/gf23mmf4-r-lm-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2017/04/1_thum_gf23mmf4-r-lm-wr.jpg"/>
-          <h3>
-           GF23mmF4 R LM WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/gf30mmf35-r-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2020/06/thum-dgaa.jpg"/>
-          <h3>
-           GF30mmF3.5 R WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/gf45mmf28-r-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2017/09/2_thum_gf45mmf2-8-r-wr.jpg"/>
-          <h3>
-           GF45mmF2.8 R WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/gf50mmf35-r-lm-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2019/07/gf50mmf35-R-lm-wr_thum.jpg"/>
-          <h3>
-           GF50mmF3.5 R LM WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/gf63mmf28-r-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2017/04/3_thum_gf63mmf2-8-r-wr.jpg"/>
-          <h3>
-           GF63mmF2.8 R WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/gf80mmf17-r-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2021/01/thum_gf80mmf14-wr-lboe.jpg"/>
-          <h3>
-           GF80mmF1.7 R WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/gf110mmf2-r-lm-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2017/04/4_thum_gf110mmf2-r-lm-wr.jpg"/>
-          <h3>
-           GF110mmF2 R LM WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/gf120mmf4-r-lm-ois-wr-macro/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2017/04/5_thum_gf120mmf4-macro-r-lm-ois-wr.jpg"/>
-          <h3>
-           GF120mmF4 R LM OIS WR Macro
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/gf250mmf4-r-lm-ois-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2018/04/6_thum_gf250mmf4-r-lm-ois-wr.jpg"/>
-          <h3>
-           GF250mmF4 R LM OIS WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-       </ul>
-       <h3 class="headline_h3" id="g-mount-zoom">
-        Zoom
-       </h3>
-       <ul class="products__series_list">
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/gf20-35mmf4-r-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2022/09/1_thum_gf20-35mmf4-r-wr_sdfg.jpg"/>
-          <h3>
-           GF20-35mmF4 R WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/gf32-64mmf4-r-lm-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2018/06/1_thum_gf32-64mmf4-r-lm-wr-1.jpg"/>
-          <h3>
-           GF32-64mmF4 R LM WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/gf35-70mmf45-56-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2021/09/1_thum_gf35-70mmf45-56-wr_ghnm-2.jpg"/>
-          <h3>
-           GF35-70mmF4.5-5.6 WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/gf45-100mmf4-r-lm-ois-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2020/01/GF45-100mm-thum.jpg"/>
-          <h3>
-           GF45-100mmF4 R LM OIS WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/gf100-200mmf56-r-lm-ois-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2019/01/gf100-200mmf56-r-lm-ois-wr_0117.jpg"/>
-          <h3>
-           GF100-200mmF5.6 R LM OIS WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-       </ul>
-       <h3 class="headline_h3" id="g-mount-teleconverter">
-        Teleconverter
-       </h3>
-       <ul class="products__series_list">
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/gf14x-tc-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2018/04/1_thum_gf1-4xtc-wr.jpg"/>
-          <h3>
-           GF1.4X TC WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-       </ul>
-      </div>
-     </section>
-     <section class="products__series" id="model_x-mount">
-      <div class="inner">
-       <h2 class="headline_h2">
-        X Mount
-       </h2>
-       <ul class="category_tab pdct products__series_link products_lnav-menu">
-        <li>
-         <a href="#x-mount-prime">
-          Prime
-         </a>
-        </li>
-        <li>
-         <a href="#x-mount-zoom">
-          Zoom
-         </a>
-        </li>
-        <li>
-         <a href="#x-mount-teleconverter">
-          Teleconverter
-         </a>
-        </li>
-        <li>
-         <a href="#x-mount-cine">
-          Cine
-         </a>
-        </li>
-       </ul>
-       <h3 class="headline_h3" id="x-mount-prime">
-        Prime
-       </h3>
-       <ul class="products__series_list">
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/1_thum_xf14mmf2-8-r.jpg"/>
-          <h3>
-           XF14mmF2.8 R
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf16mmf14-r-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/2_thum_xf16mmf1-4-r-wr.jpg"/>
-          <h3>
-           XF16mmF1.4 R WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf16mmf28-r-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2019/02/XF16mmF2.8_480x480.jpg"/>
-          <h3>
-           XF16mmF2.8 R WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf18mmf14-r-lm-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2021/04/thum_xf18mmf1.4_haoi.jpg"/>
-          <h3>
-           XF18mmF1.4 R LM WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf18mmf2-r/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/3_thum_xf18mmf2-r.jpg"/>
-          <h3>
-           XF18mmF2 R
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf23mmf14-r/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/02/4_thum_xf23mmf1-4-r.jpg"/>
-          <h3>
-           XF23mmF1.4 R
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf23mmf14-r-lm-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2021/09/1_thum_xf23mmf14_1214-1.jpg"/>
-          <h3>
-           XF23mmF1.4 R LM WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf23mmf2-r-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2017/04/5_thum_xf23mmf2-r-wr.jpg"/>
-          <h3>
-           XF23mmF2 R WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf27mmf28-r-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2021/01/thum_xf27mmf28-r-wr-lboe.jpg"/>
-          <h3>
-           XF27mmF2.8 R WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf30mmf28-r-lm-wr-macro/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2022/10/1_thum_xf30mmf28-r-lm-wr-macro_zxcv.jpg"/>
-          <h3>
-           XF30mmF2.8 R LM WR Macro
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf33mmf14-r-lm-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2021/09/1_thum_xf33mmf14-r-lm-wr_nakp-1.jpg"/>
-          <h3>
-           XF33mmF1.4 R LM WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf35mmf14-r/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/7_thum_xf35mmf1-4-r.jpg"/>
-          <h3>
-           XF35mmF1.4 R
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf35mmf2-r-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/8_thum_xf35mmf2-r-wr.jpg"/>
-          <h3>
-           XF35mmF2 R WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf50mmf1-r-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2020/09/xf50mmf1-r-wr_feature-ahaf.jpg"/>
-          <h3>
-           XF50mmF1.0 R WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf50mmf2-r-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2017/04/9_thum_xf50mmf2-r-wr.jpg"/>
-          <h3>
-           XF50mmF2 R WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf56mmf12-r-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2022/09/1_thum_xf56mmf12-r-wr_qwer.jpg"/>
-          <h3>
-           XF56mmF1.2 R WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf56mmf12-r-apd/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/11_thum_xfmm56f1-2-r-apd.jpg"/>
-          <h3>
-           XF56mmF1.2 R APD
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf60mmf24-r-macro/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/12_thum_xf60mmf2-4-r-macro.jpg"/>
-          <h3>
-           XF60mmF2.4 R Macro
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf80mmf28-r-lm-ois-wr-macro/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2017/09/13_thum_xf80mmf2-8macro.jpg"/>
-          <h3>
-           XF80mmF2.8 R LM OIS WR Macro
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf90mmf2-r-lm-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/14_thum_xf90mmf2-r-lm-wr.jpg"/>
-          <h3>
-           XF90mmF2 R LM WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf200mmf2-r-lm-ois-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2018/07/15_thum_xf200mmf2-r-lm-ois-wr_.jpg"/>
-          <h3>
-           XF200mmF2 R LM OIS WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xc35mmf2/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2020/01/xc35mmf2_thum.jpg"/>
-          <h3>
-           XC35mmF2
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-       </ul>
-       <h3 class="headline_h3" id="x-mount-zoom">
-        Zoom
-       </h3>
-       <ul class="products__series_list">
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf8-16mmf28-r-lm-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2018/07/1_thum_xf8-16mmf2_8-r-lm-wr.jpg"/>
-          <h3>
-           XF8-16mmF2.8 R LM WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf10-24mmf4-r-ois-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2020/10/xf10-24mmf4-r-ois-wr-product-list.jpg"/>
-          <h3>
-           XF10-24mmF4 R OIS WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf16-55mmf28-r-lm-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/2_thum_xf16-55mmf2-8-r-lm-wr.jpg"/>
-          <h3>
-           XF16-55mmF2.8 R LM WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf16-80mmf4-r-ois-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2019/10/xf16-80mmf4-r-ois-wr_thum.jpg"/>
-          <h3>
-           XF16-80mmF4 R OIS WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf18-55mmf28-4-r-lm-ois/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/5_thum_xf18-55mmf2-8-4-r-lm-ois.jpg"/>
-          <h3>
-           XF18-55mmF2.8-4 R LM OIS
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf18-120mmf4-lm-pz-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2022/05/1_thum_xf18-120mmf4-lm-pz-wr_fgrt.jpg"/>
-          <h3>
-           XF18-120mmF4 LM PZ WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf18-135mmf35-56-r-lm-ois-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/7_thum_xf18-135mmf3-5-5-6-r-lm-ois-wr.jpg.jpg"/>
-          <h3>
-           XF18-135mmF3.5-5.6 R LM OIS WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf50-140mmf28-r-lm-ois-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/3_thum_xf50-140mmf2_8-r-lm-ois-wr.jpg"/>
-          <h3>
-           XF50-140mmF2.8 R LM OIS WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf55-200mmf35-48-r-lm-ois/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/8_thum_xf55-200mmf3-5-4-8-r-lm-ois.jpg"/>
-          <h3>
-           XF55-200mmF3.5-4.8 R LM OIS
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf70-300mmf4-56-r-lm-ois-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2021/01/thum_xf70-300mm-lboe.jpg"/>
-          <h3>
-           XF70-300mmF4-5.6 R LM OIS WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf100-400mmf45-56-r-lm-ois-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/4_thum_xf100-400mmf4-5-5-6-r-lm-ois-wr.jpg"/>
-          <h3>
-           XF100-400mmF4.5-5.6 R LM OIS WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf150-600mmf56-8-r-lm-ois-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2022/05/1_thum_xf150-600mmf56-8-r-lm-ois-wr_mgpf.jpg"/>
-          <h3>
-           XF150-600mmF5.6-8 R LM OIS WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xc15-45mmf35-56-ois-pz/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2019/10/9_thum_xc15-45mmf3-5-5-6-ois-pz-1.jpg"/>
-          <h3>
-           XC15-45mmF3.5-5.6 OIS PZ
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xc50-230mmf45-67-ois-2/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/11_thum_xc50-230mmf4-5-6-7-ois.jpg"/>
-          <h3>
-           XC50-230mmF4.5-6.7 OIS II
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-       </ul>
-       <h3 class="headline_h3" id="x-mount-teleconverter">
-        Teleconverter
-       </h3>
-       <ul class="products__series_list">
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf14x-tc-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/1_thum_xf1-4x-tc-wr.jpg"/>
-          <h3>
-           XF1.4X TC WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/xf2x-tc-wr/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2016/10/2_thum_xf2x-tc-wr.jpg"/>
-          <h3>
-           XF2X TC WR
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-       </ul>
-       <h3 class="headline_h3" id="x-mount-cine">
-        Cine
-       </h3>
-       <ul class="products__series_list">
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/mkx18-55mmt29/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2018/02/1_thum_mkx18-55mmt2-9.jpg"/>
-          <h3>
-           MKX18-55mmT2.9
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-        <li>
-         <a href="https://fujifilm-x.com/global/products/lenses/mkx50-135mmt29/">
-          <img src="https://fujifilm-x.com/wp-content/uploads/2018/02/2_thum_mkx50-135mmt2-9.jpg"/>
-          <h3>
-           MKX50-135mmT2.9
-           <span class="new_text">
-           </span>
-          </h3>
-          <p class="products__series_list_text">
-           <span>
-           </span>
-          </p>
-         </a>
-        </li>
-       </ul>
-      </div>
-     </section>
-     <a href="#wrap" id="pagetop">
+   <style>
+    .products_main-overview,
+    .products_main {
+      background-image: url(https://fujifilm-x.com/wp-content/uploads/2019/10/XF14mmF2.8-R-1.png);
+    }
+   </style>
+   <nav class="products_lnav" id="sticky_sub_nav">
+    <strong>
+     <a href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/">
+      XF14mmF2.8 R
      </a>
-    </main>
-   </main>
-   <section class="box_related">
-    <h2 class="headline_h2">
-     PICKUP
-    </h2>
+    </strong>
+    <div>
+     <input class="products_lnav-togglebtn sp-only" id="css-menu" name="css-menu" type="checkbox"/>
+     <label class="sp-only" for="css-menu">
+     </label>
+     <ul class="products_lnav-menu">
+      <li>
+       <a href="/global/products/lenses/xf14mmf28-r/">
+        Overview
+       </a>
+      </li>
+      <li>
+       <a href="/global/products/lenses/xf14mmf28-r/specifications/">
+        Specifications
+       </a>
+      </li>
+      <li>
+       <a href="/global/products/lenses/xf14mmf28-r/sample-images/">
+        Sample Images
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
+   <div class="elementor elementor-154249" data-elementor-id="154249" data-elementor-type="wp-post">
+    <div class="elementor-inner">
+     <div class="elementor-section-wrap">
+      <section class="has_eae_slider elementor-section elementor-top-section elementor-element elementor-element-f1398bc elementor-section-height-min-height elementor-section-content-middle elementor-section-full_width products_main elementor-section-height-default elementor-section-items-middle" data-element_type="section" data-id="f1398bc" data-settings='{"background_background":"classic"}'>
+       <div class="elementor-background-overlay">
+       </div>
+       <div class="elementor-container elementor-column-gap-no">
+        <div class="elementor-row">
+         <div class="has_eae_slider elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-7f84d89" data-element_type="column" data-id="7f84d89">
+          <div class="elementor-column-wrap elementor-element-populated">
+           <div class="elementor-widget-wrap">
+            <div class="elementor-element elementor-element-e27819a elementor-widget elementor-widget-heading" data-element_type="widget" data-id="e27819a" data-widget_type="heading.default">
+             <div class="elementor-widget-container">
+              <h1 class="elementor-heading-title elementor-size-default">
+               Specifications
+              </h1>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+      <section class="has_eae_slider elementor-section elementor-top-section elementor-element elementor-element-2d916520 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-element_type="section" data-id="2d916520">
+       <div class="elementor-container elementor-column-gap-default">
+        <div class="elementor-row">
+         <div class="has_eae_slider elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-31018687" data-element_type="column" data-id="31018687">
+          <div class="elementor-column-wrap elementor-element-populated">
+           <div class="elementor-widget-wrap">
+            <div class="elementor-element elementor-element-685c628 elementor-widget elementor-widget-heading" data-element_type="widget" data-id="685c628" data-widget_type="heading.default">
+             <div class="elementor-widget-container">
+              <h2 class="elementor-heading-title elementor-size-default">
+               Lens Configuration
+              </h2>
+             </div>
+            </div>
+            <section class="has_eae_slider elementor-section elementor-inner-section elementor-element elementor-element-b0c7017 box_default-center elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-element_type="section" data-id="b0c7017">
+             <div class="elementor-container elementor-column-gap-default">
+              <div class="elementor-row">
+               <div class="has_eae_slider elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-c58e057 box_default-center" data-element_type="column" data-id="c58e057">
+                <div class="elementor-column-wrap elementor-element-populated">
+                 <div class="elementor-widget-wrap">
+                  <div class="elementor-element elementor-element-57c42fa elementor-widget elementor-widget-image" data-element_type="widget" data-id="57c42fa" data-widget_type="image.default">
+                   <div class="elementor-widget-container">
+                    <div class="elementor-image">
+                     <img alt="" decoding="async" src="https://fujifilm-x.com/wp-content/uploads/2019/08/xf14mmf28-r_cross.jpg"/>
+                    </div>
+                   </div>
+                  </div>
+                 </div>
+                </div>
+               </div>
+              </div>
+             </div>
+            </section>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+      <section class="has_eae_slider elementor-section elementor-top-section elementor-element elementor-element-c5cf111 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-element_type="section" data-id="c5cf111">
+       <div class="elementor-container elementor-column-gap-default">
+        <div class="elementor-row">
+         <div class="has_eae_slider elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-7303e7c" data-element_type="column" data-id="7303e7c">
+          <div class="elementor-column-wrap elementor-element-populated">
+           <div class="elementor-widget-wrap">
+            <div class="elementor-element elementor-element-fdb5f69 elementor-widget elementor-widget-heading" data-element_type="widget" data-id="fdb5f69" data-widget_type="heading.default">
+             <div class="elementor-widget-container">
+              <h2 class="elementor-heading-title elementor-size-default">
+               MTF Chart
+              </h2>
+             </div>
+            </div>
+            <div class="elementor-element elementor-element-1232b33 elementor-widget elementor-widget-text-editor" data-element_type="widget" data-id="1232b33" data-widget_type="text-editor.default">
+             <div class="elementor-widget-container">
+              <div class="elementor-text-editor elementor-clearfix">
+               <p>
+                Vertical axis : Contrast
+               </p>
+               <p>
+                Horizontal axis : Distance from the center of the image
+               </p>
+               <p>
+                S : Sagittal
+               </p>
+               <p>
+                M : Meridional
+               </p>
+              </div>
+             </div>
+            </div>
+            <section class="has_eae_slider elementor-section elementor-inner-section elementor-element elementor-element-efd2400 box_col box_col3 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-element_type="section" data-id="efd2400">
+             <div class="elementor-container elementor-column-gap-default">
+              <div class="elementor-row">
+               <div class="has_eae_slider elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-f597ee1" data-element_type="column" data-id="f597ee1">
+                <div class="elementor-column-wrap elementor-element-populated">
+                 <div class="elementor-widget-wrap">
+                  <div class="elementor-element elementor-element-80eacb3 elementor-widget elementor-widget-heading" data-element_type="widget" data-id="80eacb3" data-widget_type="heading.default">
+                   <div class="elementor-widget-container">
+                    <h3 class="elementor-heading-title elementor-size-default">
+                     Spatial frequency 15 lines/mm
+                    </h3>
+                   </div>
+                  </div>
+                  <div class="elementor-element elementor-element-4f323471 elementor-widget elementor-widget-image" data-element_type="widget" data-id="4f323471" data-widget_type="image.default">
+                   <div class="elementor-widget-container">
+                    <div class="elementor-image">
+                     <figure class="wp-caption">
+                      <img alt="" decoding="async" src="https://fujifilm-x.com/wp-content/uploads/2019/08/xf14mmf28-r_Specifications-images02.gif">
+                       <figcaption class="widget-image-caption wp-caption-text">
+                        Distance from the center of the image
+                       </figcaption>
+                      </img>
+                     </figure>
+                    </div>
+                   </div>
+                  </div>
+                 </div>
+                </div>
+               </div>
+               <div class="has_eae_slider elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-c02af25" data-element_type="column" data-id="c02af25">
+                <div class="elementor-column-wrap elementor-element-populated">
+                 <div class="elementor-widget-wrap">
+                  <div class="elementor-element elementor-element-d59ccef elementor-widget elementor-widget-heading" data-element_type="widget" data-id="d59ccef" data-widget_type="heading.default">
+                   <div class="elementor-widget-container">
+                    <h3 class="elementor-heading-title elementor-size-default">
+                     Spatial frequency 45 lines/mm
+                    </h3>
+                   </div>
+                  </div>
+                  <div class="elementor-element elementor-element-17083f01 elementor-widget elementor-widget-image" data-element_type="widget" data-id="17083f01" data-widget_type="image.default">
+                   <div class="elementor-widget-container">
+                    <div class="elementor-image">
+                     <figure class="wp-caption">
+                      <img alt="" decoding="async" src="https://fujifilm-x.com/wp-content/uploads/2019/08/xf14mmf28-r_Specifications-images03.gif">
+                       <figcaption class="widget-image-caption wp-caption-text">
+                        Distance from the center of the image
+                       </figcaption>
+                      </img>
+                     </figure>
+                    </div>
+                   </div>
+                  </div>
+                 </div>
+                </div>
+               </div>
+               <div class="has_eae_slider elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-8c1025a" data-element_type="column" data-id="8c1025a">
+                <div class="elementor-column-wrap elementor-element-populated">
+                 <div class="elementor-widget-wrap">
+                  <div class="elementor-element elementor-element-5d433eb elementor-widget elementor-widget-image" data-element_type="widget" data-id="5d433eb" data-widget_type="image.default">
+                   <div class="elementor-widget-container">
+                    <div class="elementor-image">
+                     <figure class="wp-caption">
+                      <img alt="" decoding="async" src="https://fujifilm-x.com/wp-content/uploads/2019/08/xf56mmf12-r-apd_Specifications-images04.gif">
+                       <figcaption class="widget-image-caption wp-caption-text">
+                       </figcaption>
+                      </img>
+                     </figure>
+                    </div>
+                   </div>
+                  </div>
+                 </div>
+                </div>
+               </div>
+              </div>
+             </div>
+            </section>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+      <section class="has_eae_slider elementor-section elementor-top-section elementor-element elementor-element-6bcbf766 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-element_type="section" data-id="6bcbf766">
+       <div class="elementor-container elementor-column-gap-default">
+        <div class="elementor-row">
+         <div class="has_eae_slider elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-58629a64" data-element_type="column" data-id="58629a64">
+          <div class="elementor-column-wrap elementor-element-populated">
+           <div class="elementor-widget-wrap">
+            <div class="elementor-element elementor-element-5b82efc elementor-widget elementor-widget-heading" data-element_type="widget" data-id="5b82efc" data-widget_type="heading.default">
+             <div class="elementor-widget-container">
+              <h2 class="elementor-heading-title elementor-size-default">
+               Specifications
+              </h2>
+             </div>
+            </div>
+            <section class="has_eae_slider elementor-section elementor-inner-section elementor-element elementor-element-a5e0251 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-element_type="section" data-id="a5e0251">
+             <div class="elementor-container elementor-column-gap-default">
+              <div class="elementor-row">
+               <div class="has_eae_slider elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-28856263" data-element_type="column" data-id="28856263">
+                <div class="elementor-column-wrap elementor-element-populated">
+                 <div class="elementor-widget-wrap">
+                  <div class="elementor-element elementor-element-68294ba9 elementor-widget elementor-widget-shortcode" data-element_type="widget" data-id="68294ba9" data-widget_type="shortcode.default">
+                   <div class="elementor-widget-container">
+                    <div class="elementor-shortcode">
+                     <table class="tablepress tablepress-id-lens-xf14mmf28-r_spec table_border-twotone table_th2" id="tablepress-lens-xf14mmf28-r_spec">
+                      <tbody>
+                       <tr class="row-1">
+                        <td class="column-1" colspan="2">
+                         Type
+                        </td>
+                        <td class="column-3">
+                         FUJINON XF14mmF2.8 R
+                        </td>
+                       </tr>
+                       <tr class="row-2">
+                        <td class="column-1" colspan="2">
+                         Lens construction
+                        </td>
+                        <td class="column-3">
+                         10 elements in 7 groups
+                         <br/>
+                         (includes 2 aspherical and 3 extra low dispersion elements)
+                        </td>
+                       </tr>
+                       <tr class="row-3">
+                        <td class="column-1" colspan="2">
+                         Focal length
+                        </td>
+                        <td class="column-3">
+                         f=14mm (21mm in 35mm format equivalent)
+                        </td>
+                       </tr>
+                       <tr class="row-4">
+                        <td class="column-1" colspan="2">
+                         Angle of view
+                        </td>
+                        <td class="column-3">
+                         90.8°
+                        </td>
+                       </tr>
+                       <tr class="row-5">
+                        <td class="column-1" colspan="2">
+                         Max. aperture
+                        </td>
+                        <td class="column-3">
+                         F2.8
+                        </td>
+                       </tr>
+                       <tr class="row-6">
+                        <td class="column-1" colspan="2">
+                         Min. aperture
+                        </td>
+                        <td class="column-3">
+                         F22
+                        </td>
+                       </tr>
+                       <tr class="row-7">
+                        <td class="column-1" colspan="3">
+                         Aperture control
+                        </td>
+                       </tr>
+                       <tr class="row-8">
+                        <td class="column-1">
+                        </td>
+                        <td class="column-2">
+                         Number of blades
+                        </td>
+                        <td class="column-3">
+                         7(rounded diaphragm opening)
+                        </td>
+                       </tr>
+                       <tr class="row-9">
+                        <td class="column-1">
+                        </td>
+                        <td class="column-2">
+                         Stop size
+                        </td>
+                        <td class="column-3">
+                         1/3EV (19 stops)
+                        </td>
+                       </tr>
+                       <tr class="row-10">
+                        <td class="column-1" colspan="3">
+                         Focus range
+                        </td>
+                       </tr>
+                       <tr class="row-11">
+                        <td class="column-1">
+                        </td>
+                        <td class="column-2">
+                         Normal
+                        </td>
+                        <td class="column-3">
+                         30cm - ∞
+                        </td>
+                       </tr>
+                       <tr class="row-12">
+                        <td class="column-1">
+                        </td>
+                        <td class="column-2">
+                         Macro
+                        </td>
+                        <td class="column-3">
+                         18cm - ∞
+                        </td>
+                       </tr>
+                       <tr class="row-13">
+                        <td class="column-1" colspan="2">
+                         Max. magnification
+                        </td>
+                        <td class="column-3">
+                         0.12x
+                        </td>
+                       </tr>
+                       <tr class="row-14">
+                        <td class="column-1" colspan="2">
+                         External dimensions : Diameter x Length
+                         <sup>
+                          *1
+                         </sup>
+                         (approx.)
+                        </td>
+                        <td class="column-3">
+                         ø65mm x 58.4mm
+                        </td>
+                       </tr>
+                       <tr class="row-15">
+                        <td class="column-1" colspan="2">
+                         Weight
+                         <sup>
+                          *2
+                         </sup>
+                         (approx.)
+                        </td>
+                        <td class="column-3">
+                         235g
+                        </td>
+                       </tr>
+                       <tr class="row-16">
+                        <td class="column-1" colspan="2">
+                         Filter size
+                        </td>
+                        <td class="column-3">
+                         ø58mm
+                        </td>
+                       </tr>
+                      </tbody>
+                     </table>
+                    </div>
+                   </div>
+                  </div>
+                 </div>
+                </div>
+               </div>
+              </div>
+             </div>
+            </section>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+      <section class="has_eae_slider elementor-section elementor-top-section elementor-element elementor-element-764b41a box_notes elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-element_type="section" data-id="764b41a">
+       <div class="elementor-container elementor-column-gap-default">
+        <div class="elementor-row">
+         <div class="has_eae_slider elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5bfbd8a" data-element_type="column" data-id="5bfbd8a">
+          <div class="elementor-column-wrap elementor-element-populated">
+           <div class="elementor-widget-wrap">
+            <div class="elementor-element elementor-element-a5daa31 elementor-widget elementor-widget-heading" data-element_type="widget" data-id="a5daa31" data-widget_type="heading.default">
+             <div class="elementor-widget-container">
+              <h2 class="elementor-heading-title elementor-size-default">
+               NOTES
+              </h2>
+             </div>
+            </div>
+            <div class="elementor-element elementor-element-aacbeaa elementor-widget elementor-widget-text-editor" data-element_type="widget" data-id="aacbeaa" data-widget_type="text-editor.default">
+             <div class="elementor-widget-container">
+              <div class="elementor-text-editor elementor-clearfix">
+               <p>
+                *1 Distance from camera lens mount flange
+               </p>
+               <p>
+                *2 Excluding caps and hood
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+     </div>
+    </div>
+   </div>
+   <nav class="products_lnav-pager type-bottom">
+   </nav>
+   <nav class="box_utility">
     <ul>
      <li>
-      <a href="https://fujifilm-x.com/global/special/imaging-solution/" target="_blank">
-       <div class="inner-img">
-        <img src="https://fujifilm-x.com/wp-content/uploads/2021/05/imaging_B2B_en_bnr.jpeg"/>
-       </div>
-       <div class="inner-txt">
-        <h3>
-         FUJIFILM Digital Imaging Solutions
-        </h3>
-        <p>
-         For Business and Commercial Applications
-        </p>
-       </div>
+      <a href="/global/support/download/firmware/lenses/xf14mmf28-r/">
+       <img src="/wp-content/themes/fujifilm-x_jp/assets/img/common/icn_utility-firmware.svg"/>
+       FIRMWARE
       </a>
      </li>
      <li>
-      <a href="/global/products/x-trans-cmos/" target="_blank">
-       <div class="inner-img">
-        <img src="https://fujifilm-x.com/wp-content/uploads/2022/03/pickup-x-trans.jpeg"/>
-       </div>
-       <div class="inner-txt">
-        <h3>
-         Technology of X-Trans CMOS
-        </h3>
-        <p>
-         Continuous Evolution on Resolution and Color Reproduction
-        </p>
-       </div>
+      <a href="/global/support/manual/lenses/">
+       <img src="/wp-content/themes/fujifilm-x_jp/assets/img/common/icn_utility-manual.svg"/>
+       MANUAL
       </a>
      </li>
      <li>
-      <a href="/global/products/brochure/" target="_blank">
-       <div class="inner-img">
-        <img src="https://fujifilm-x.com/wp-content/uploads/2019/10/Brochure_Library.jpg"/>
-       </div>
-       <div class="inner-txt">
-        <h3>
-         Brochure Library
-        </h3>
-        <p>
-         Read more about our products in these downloadable PDF format brochures
-        </p>
-       </div>
+      <a href="/global/support/compatibility/lenses/xf14mmf28-r/">
+       <img src="/wp-content/themes/fujifilm-x_jp/assets/img/common/icn_utility-compatibility.svg"/>
+       COMPATIBILITY
       </a>
      </li>
      <li>
-      <a href="/global/products/x-mount-lens-roadmap/" target="_blank">
-       <div class="inner-img">
-        <img src="https://fujifilm-x.com/wp-content/uploads/2019/10/X_Mount_lens_roadmap.jpg"/>
-       </div>
-       <div class="inner-txt">
-        <h3>
-         X Mount Lens Roadmap
-        </h3>
-        <p>
-         The latest development roadmap for interchangeable lenses for the X Series
-        </p>
-       </div>
-      </a>
-     </li>
-     <li>
-      <a href="/global/products/g-mount-lens-roadmap/" target="_blank">
-       <div class="inner-img">
-        <img src="https://fujifilm-x.com/wp-content/uploads/2019/10/G_Mount_lens_roadmap.jpg"/>
-       </div>
-       <div class="inner-txt">
-        <h3>
-         G Mount Lens Roadmap
-        </h3>
-        <p>
-         The latest development roadmap for interchangeable lenses for the GFX Series
-        </p>
-       </div>
+      <a href="https://digitalcamera-support-en.fujifilm.com/" target="_blank">
+       <img src="/wp-content/themes/fujifilm-x_jp/assets/img/common/icn_utility-faq.svg"/>
+       FAQ
       </a>
      </li>
     </ul>
+   </nav>
+   <section class="product__recentlyviewd">
+    <div class="inner">
+     <div class="section__title">
+      <h2 class="headline_h2">
+       RECENTLY VIEWED ITEMS
+      </h2>
+     </div>
+     <ul class="recentlyviewd__slider">
+     </ul>
+    </div>
    </section>
-   <div class="231499">
+   <div class="154249">
    </div>
    <a href="#wrap" id="pagetop">
    </a>
@@ -1900,8 +1372,14 @@ html_content = """<!DOCTYPE html>
        <a href="https://fujifilm-x.com">
         HOME
        </a>
-       <span>
+       <a href="https://fujifilm-x.com/global/products/lenses/">
         Lenses
+       </a>
+       <a href="https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/">
+        XF14mmF2.8 R
+       </a>
+       <span>
+        Specifications
        </span>
       </div>
      </div>
@@ -2156,6 +1634,59 @@ html_content = """<!DOCTYPE html>
   </script>
   <script src="/wp-content/themes/fujifilm-x_jp/assets/js/elementor_custom.js?ver=201910">
   </script>
+  <link href="/wp-content/themes/fujifilm-x_jp/assets/css/style_products.css" rel="stylesheet"/>
+  <script>
+   var $recentlyviewd = $('.product__recentlyviewd');
+      var $viewed = [];
+      if(localStorage.getItem('recently_viewed_29')) {
+        $viewed.unshift(localStorage.getItem('recently_viewed_29'));
+        var $viewed_obj = JSON.parse($viewed);
+
+              localStorage.removeItem('recently_viewed_29');
+      
+      } else {
+        var $viewed_obj = [];
+        $recentlyviewd.hide();
+      }
+
+      var $viewed_list_0 = $viewed_obj.filter(function(v1,i1,a1){
+        return (a1.findIndex(function(v2){
+          return (v1.id===v2.id)
+        }) === i1);
+      });
+              var $viewed_list = $viewed_list_0.filter(function(entry){return entry.id!=267959;});
+      
+
+      if( $viewed_list.length < 1 ) {
+        $recentlyviewd.hide();
+      }
+
+
+      var ua = navigator.userAgent;
+      if (ua.indexOf('iPhone') > 0 || ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {
+        var $vl = $viewed_list.slice(0, 4);
+      } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+        var $vl = $viewed_list.slice(0, 10);
+      } else {
+        var $vl = $viewed_list.slice(0, 10);
+      }
+
+      $vl.forEach( function( value ) {
+          $recentlyviewd.find('ul.recentlyviewd__slider').append(
+            '<li><a href="'+value.url+'"><img src="'+value.thumb+'"><b>'+value.name+'</b></a></li>'
+          )
+      });
+
+
+                  // var viewing_url1 = https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/;
+          // var viewing_url2 = viewing_url1.replace(/\?.*$/,"");
+          var $viewingData = {id: '267959', name :'XF14mmF2.8 R', url: 'https://fujifilm-x.com/global/products/lenses/xf14mmf28-r/', thumb: 'https://fujifilm-x.com/wp-content/uploads/2016/10/1_thum_xf14mmf2-8-r.jpg'};
+        
+
+
+              $vl.unshift($viewingData);
+      localStorage.setItem('recently_viewed_29', JSON.stringify($vl));
+  </script>
   <script src="/wp-content/themes/fujifilm-x_jp/assets/js/script_products.js">
   </script>
   <script src="/wp-content/themes/fujifilm-x_jp/assets/js/parts__product_view.js">
@@ -2171,7 +1702,7 @@ html_content = """<!DOCTYPE html>
   <script id="amo_js3-js" src="https://fujifilm-x.com/wp-content/plugins/arrange-multisite-order/js/amo.js" type="text/javascript">
   </script>
   <script id="eae-main-js-extra" type="text/javascript">
-   var eae = {"ajaxurl":"https:\/\/fujifilm-x.com\/wp-admin\/admin-ajax.php","current_url":"aHR0cHM6Ly9mdWppZmlsbS14LmNvbS9wcm9kdWN0cy9sZW5zZXMvP2NvdW50cnk9Z2xvYmFsJiMwMzg7bGFuZz0v","breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600}};
+   var eae = {"ajaxurl":"https:\/\/fujifilm-x.com\/wp-admin\/admin-ajax.php","current_url":"aHR0cHM6Ly9mdWppZmlsbS14LmNvbS9wcm9kdWN0cy9sZW5zZXMveGYxNG1tZjI4LXIvc3BlY2lmaWNhdGlvbnMvP2NvdW50cnk9Z2xvYmFsJiMwMzg7bGFuZz0v","breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600}};
 var eae_editor = {"plugin_url":"https:\/\/fujifilm-x.com\/wp-content\/plugins\/addon-elements-for-elementor-page-builder\/"};
   </script>
   <script id="eae-main-js" src="https://fujifilm-x.com/wp-content/plugins/addon-elements-for-elementor-page-builder/assets/js/eae.min.js" type="text/javascript">
@@ -2186,45 +1717,48 @@ var eae_editor = {"plugin_url":"https:\/\/fujifilm-x.com\/wp-content\/plugins\/a
   </script>
   <script id="vegas-js" src="https://fujifilm-x.com/wp-content/plugins/addon-elements-for-elementor-page-builder/assets/lib/vegas/vegas.min.js" type="text/javascript">
   </script>
+  <script id="elementor-pro-webpack-runtime-js" src="https://fujifilm-x.com/wp-content/plugins/elementor-pro/assets/js/webpack-pro.runtime.min.js" type="text/javascript">
+  </script>
+  <script id="elementor-webpack-runtime-js" src="https://fujifilm-x.com/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js" type="text/javascript">
+  </script>
+  <script id="elementor-frontend-modules-js" src="https://fujifilm-x.com/wp-content/plugins/elementor/assets/js/frontend-modules.min.js" type="text/javascript">
+  </script>
+  <script id="regenerator-runtime-js" src="https://fujifilm-x.com/wp-includes/js/dist/vendor/regenerator-runtime.min.js" type="text/javascript">
+  </script>
+  <script id="wp-polyfill-js" src="https://fujifilm-x.com/wp-includes/js/dist/vendor/wp-polyfill.min.js" type="text/javascript">
+  </script>
+  <script id="wp-hooks-js" src="https://fujifilm-x.com/wp-includes/js/dist/hooks.min.js" type="text/javascript">
+  </script>
+  <script id="wp-i18n-js" src="https://fujifilm-x.com/wp-includes/js/dist/i18n.min.js" type="text/javascript">
+  </script>
+  <script id="wp-i18n-js-after" type="text/javascript">
+   wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+  </script>
+  <script id="elementor-pro-frontend-js-before" type="text/javascript">
+   var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/fujifilm-x.com\/wp-admin\/admin-ajax.php","nonce":"d3ff8eedd3","urls":{"assets":"https:\/\/fujifilm-x.com\/wp-content\/plugins\/elementor-pro\/assets\/","rest":"https:\/\/fujifilm-x.com\/wp-json\/"},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},
+"facebook_sdk":{"lang":"global","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/fujifilm-x.com\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}};
+  </script>
+  <script id="elementor-pro-frontend-js" src="https://fujifilm-x.com/wp-content/plugins/elementor-pro/assets/js/frontend.min.js" type="text/javascript">
+  </script>
+  <script id="elementor-waypoints-js" src="https://fujifilm-x.com/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js" type="text/javascript">
+  </script>
+  <script id="swiper-js" src="https://fujifilm-x.com/wp-content/plugins/elementor/assets/lib/swiper/swiper.min.js" type="text/javascript">
+  </script>
+  <script id="share-link-js" src="https://fujifilm-x.com/wp-content/plugins/elementor/assets/lib/share-link/share-link.min.js" type="text/javascript">
+  </script>
+  <script id="elementor-dialog-js" src="https://fujifilm-x.com/wp-content/plugins/elementor/assets/lib/dialog/dialog.min.js" type="text/javascript">
+  </script>
+  <script id="elementor-frontend-js-before" type="text/javascript">
+   var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}}},
+"version":"3.13.0","is_static":false,"experimentalFeatures":{"a11y_improvements":true,"additional_custom_breakpoints":true,"theme_builder_v2":true,"landing-pages":true,"page-transitions":true,"notes":true,"loop":true,"form-submissions":true,"e_scroll_snap":true},"urls":{"assets":"https:\/\/fujifilm-x.com\/wp-content\/plugins\/elementor\/assets\/"},"swiperClass":"swiper-container","settings":{"page":[],"editorPreferences":[]},"kit":{"global_image_lightbox":"yes","active_breakpoints":["viewport_mobile","viewport_tablet"],"lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description"},"post":{"id":154249,"title":"Specifications","excerpt":"","featuredImage":false}};
+  </script>
+  <script id="elementor-frontend-js" src="https://fujifilm-x.com/wp-content/plugins/elementor/assets/js/frontend.min.js" type="text/javascript">
+  </script>
+  <script id="pro-preloaded-elements-handlers-js" src="https://fujifilm-x.com/wp-content/plugins/elementor-pro/assets/js/preloaded-elements-handlers.min.js" type="text/javascript">
+  </script>
+  <script id="preloaded-modules-js" src="https://fujifilm-x.com/wp-content/plugins/elementor/assets/js/preloaded-modules.min.js" type="text/javascript">
+  </script>
+  <script id="e-sticky-js" src="https://fujifilm-x.com/wp-content/plugins/elementor-pro/assets/lib/sticky/jquery.sticky.min.js" type="text/javascript">
+  </script>
  </body>
 </html>
-"""
-#print(html_content)
-
-
-lens = []
-
-soup = BeautifulSoup(html_content, "html.parser")
-res = soup.find(id="model_x-mount")
-
-res = res.find_all('ul')
-for _ in res:
-    #print(_)
-    l_ = _.find_all('a')
-    if len(l_) > 6:
-        for p in l_:
-            name = p.h3.text.strip().split('\n')[0]
-            tmp = {'Name': name}
-            url = p['href'] + 'specifications'
-            response = requests.get(url, headers=headers)
-            html_len = BeautifulSoup(response.text, 'html.parser')
-            specifications_sections = html_len.find_all('tr')
-            for ss in specifications_sections:
-                tds = ss.find_all('td')
-                flag = 0
-                for td in tds:
-                    if flag:
-                        #print(td.text.strip().split('\n')[0])
-                        tmp['Weight'] = td.text.strip().split('\n')[0]
-                        break
-                    if 'Weight' in td.text.strip().split('\n')[0]:
-                        flag = 1
-                if flag:
-                    flag = 0
-                    break
-            lens.append(tmp)
-print(lens)
-'''
-with open('res.html', 'w+', encoding='utf-8') as f:
-    f.write(res.prettify())
-'''

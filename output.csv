@@ -1,0 +1,37 @@
+Name,Weight,Focal_length,Aperture,LM,OIS,WR
+XF14mmF2.8 R,235g,14mm,F2.8,False,False,False
+XF16mmF1.4 R WR,375g,16mm,F1.4,False,False,True
+XF16mmF2.8 R WR,155g,16mm,F2.8,False,False,True
+XF18mmF1.4 R LM WR,370g,18mm,F1.4,True,False,True
+XF18mmF2 R,116g,18mm,F2,False,False,False
+XF23mmF1.4 R,300g,23mm,F1.4,False,False,False
+XF23mmF1.4 R LM WR,375g,23mm,F1.4,True,False,True
+XF23mmF2 R WR,180g,23mm,F2,False,False,True
+XF27mmF2.8 R WR,84g,27mm,F2.8,False,False,True
+XF30mmF2.8 R LM WR Macro,195g,30mm,F2.8,True,False,True
+XF33mmF1.4 R LM WR,360g,33mm,F1.4,True,False,True
+XF35mmF1.4 R,187g,35mm,F1.4,False,False,False
+XF35mmF2 R WR,170g,35mm,F2,False,False,True
+XF50mmF1.0 R WR,845g,50mm,F1.0,False,False,True
+XF50mmF2 R WR,200g,50mm,F2,False,False,True
+XF56mmF1.2 R WR,445g,56mm,F1.2,False,False,True
+XF56mmF1.2 R APD,405g,56mm,F1.2,False,False,False
+XF60mmF2.4 R Macro,215g,60mm,F2.4,False,False,False
+XF80mmF2.8 R LM OIS WR Macro,750g,80mm,F2.8,True,True,True
+XF90mmF2 R LM WR,540g,90mm,F2,True,False,True
+XF200mmF2 R LM OIS WR,"2,265g",200mm,F2,True,True,True
+XC35mmF2,130g,35mm,F2,False,False,False
+XF8-16mmF2.8 R LM WR,805g,8-16mm,F2.8,True,False,True
+XF10-24mmF4 R OIS WR,385g,10-24mm,F4,False,True,True
+XF16-55mmF2.8 R LM WR,655g,16-55mm,F2.8,True,False,True
+XF16-80mmF4 R OIS WR,440g,16-80mm,F4,False,True,True
+XF18-55mmF2.8-4 R LM OIS,310g,18-55mm,F2.8-4,True,True,False
+XF18-120mmF4 LM PZ WR,460g,18-120mm,F4,True,False,True
+XF18-135mmF3.5-5.6 R LM OIS WR,490g,18-135mm,F3.5-5.6,True,True,True
+XF50-140mmF2.8 R LM OIS WR,995g,50-140mm,F2.8,True,True,True
+XF55-200mmF3.5-4.8 R LM OIS,580g,55-200mm,F3.5-4.8,True,True,False
+XF70-300mmF4-5.6 R LM OIS WR,580g,70-300mm,F4-5.6,True,True,True
+XF100-400mmF4.5-5.6 R LM OIS WR,"1,375g",100-400mm,F4.5-5.6,True,True,True
+XF150-600mmF5.6-8 R LM OIS WR,"1,605g",150-600mm,F5.6-8,True,True,True
+XC15-45mmF3.5-5.6 OIS PZ,135g,15-45mm,F3.5-5.6,False,True,False
+XC50-230mmF4.5-6.7 OIS II,,50-230mm,F4.5-6.7,False,True,False
